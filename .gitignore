@@ -74,7 +74,11 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
-#Assets from itch, scetchfab etc. (e.g. textures, materials)
-/Rules/[Aa]ssets/[Mm]aterials/
-/Rules/[Aa]ssets/[Tt]extures/
-/Rules/[Aa]ssets/[Mm]odels/
+# Assets from itch, scetchfab etc. (e.g. textures, materials)
+/Rules/[Aa]ssets/[Mm]aterials
+/Rules/[Aa]ssets/[Tt]extures
+/Rules/[Aa]ssets/[Mm]odels
+
+# Temp auto-generated changes
+/Rules/[Tt]emp
+
