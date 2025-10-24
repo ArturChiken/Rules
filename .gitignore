@@ -10,6 +10,7 @@
 [Bb]uilds/
 [Ll]ogs/
 [Uu]ser[Ss]ettings/
+.vscode/
 *.log
 
 # MemoryCaptures can get excessive in size.
@@ -78,5 +79,3 @@ crashlytics-build.properties
 /Rules/[Aa]ssets/[Mm]aterials
 /Rules/[Aa]ssets/[Tt]extures
 /Rules/[Aa]ssets/[Mm]odels
-
-
