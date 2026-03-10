@@ -1,0 +1,2 @@
+# Rules
+A horror game
