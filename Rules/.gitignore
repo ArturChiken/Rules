@@ -97,3 +97,9 @@ InitTestScene*.unity*
 
 # Auto-generated scenes by play mode tests
 /[Aa]ssets/[Ii]nit[Tt]est[Ss]cene*.unity*
+
+# Assets from itch, scetchfab etc. (e.g. textures, materials)
+/[Aa]ssets/[Mm]aterials
+/[Aa]ssets/[Tt]extures
+/[Aa]ssets/[Mm]odels
+
