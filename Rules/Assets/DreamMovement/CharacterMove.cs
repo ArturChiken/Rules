@@ -5,13 +5,13 @@ namespace DreamMovement
 {
     public class CharacterMove : MonoBehaviour
     {
-        [SerializeField] public MoveConfig config;
-        public MoveData data;
+        [SerializeField] public ConfigMove config;
+        public DataMove data;
 
 
         private void Awake()
         {
-            data = new MoveData();
+            data = new DataMove();
 
             data.input.Player.Jump.performed += OnJumpPerformed;
 
@@ -26,12 +26,21 @@ namespace DreamMovement
 
         private void Update()
         {
-            data.moveDir = new Vector3(data.move.x, config.GetVerticalVelocity(), data.move.y);
+            Vector3 moveDirection = new Vector3(data.move.x, 0, data.move.y).normalized;
 
-            if (data.moveDir.magnitude > 0)
-            {
-                data.controller.Move(data.moveDir * config.speed * Time.deltaTime);
-            }
+            Vector3 bodyForward = config.bodyTransform.forward;
+            bodyForward.y = 0;
+            bodyForward.Normalize();
+
+            Vector3 bodyRight = config.bodyTransform.right;
+            bodyRight.y = 0;
+            bodyRight.Normalize();
+
+            Vector3 worldMoveDirection = bodyForward * moveDirection.z + bodyRight * moveDirection.x;
+
+            worldMoveDirection.y = config.GetVerticalVelocity();
+
+            data.controller.Move(worldMoveDirection * config.speed * Time.deltaTime);
 
             Gravity();
         }
