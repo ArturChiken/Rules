@@ -1,92 +1,158 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using TMPro;
 
 public class PlayerAim : MonoBehaviour
 {
-        [Header("Aim Settings")]
-        [SerializeField] private float maxAimDistance = 100f;
-        [SerializeField] private LayerMask aimLayers = -1; // Все слои по умолчанию
-        [SerializeField] private Color defaultAimColor = Color.white;
-        [SerializeField] private Color hitAimColor = Color.red;
+    [Header("Aim Settings")]
+    [SerializeField] private float maxAimDistance = 100f;
+    [SerializeField] private LayerMask aimLayers = -1;
 
-        [Header("UI References")]
-        [SerializeField] private Image aimImage; // Ссылка на UI Image прицела
-        [SerializeField] private Sprite defaultAimSprite;
-        [SerializeField] private Sprite hitAimSprite;
+    [Header("UI References")]
+    [SerializeField] private Image aimImage;
+    [SerializeField] private Sprite defaultAimSprite;
+    [SerializeField] private Sprite interactableAimSprite;
+    [SerializeField] private TMP_Text interactionPromptText; // Текст для подсказки
 
-        private Camera playerCamera;
-        private GameObject currentHitObject;
+    [Header("Colors")]
+    [SerializeField] private Color defaultColor = Color.white;
+    [SerializeField] private Color interactableColor = Color.yellow;
+    [SerializeField] private Color blockedColor = Color.red;
 
-        private void Start()
-        {
+    private Camera playerCamera;
+    private IInteractable currentInteractable;
+    private GameObject currentHitObject;
+    private InputSystem_Actions input;
+
+    private void Awake()
+    {
+        input = new InputSystem_Actions();
+        input.Player.Interact.performed += OnInteractPerformed;
+    }
+
+    private void Start()
+    {
+        playerCamera = GetComponent<Camera>();
+
+        if (playerCamera == null)
             playerCamera = GetComponent<Camera>();
 
-            // Если камера не найдена, пытаемся найти её на этом же объекте
-            if (playerCamera == null)
-                playerCamera = GetComponent<Camera>();
-        }
+        // Скрываем текст подсказки по умолчанию
+        if (interactionPromptText != null)
+            interactionPromptText.gameObject.SetActive(false);
+    }
 
-        private void Update()
+    private void Update()
         {
             UpdateAim();
         }
 
-        private void UpdateAim()
+    private void UpdateAim()
+    {
+        if (playerCamera == null) return;
+
+        Ray ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit, maxAimDistance, aimLayers))
         {
-            if (playerCamera == null) return;
+            currentHitObject = hit.collider.gameObject;
 
-            Ray ray = playerCamera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
-            RaycastHit hit;
+            // Проверяем, есть ли интерфейс IInteractable на объекте или его родителях
+            IInteractable interactable = hit.collider.GetComponent<IInteractable>();
 
-            if (Physics.Raycast(ray, out hit, maxAimDistance, aimLayers))
+            if (interactable != null && interactable.CanInteract())
             {
-                currentHitObject = hit.collider.gameObject;
-
-                // Меняем цвет/спрайт прицела при наведении на объект
-                if (aimImage != null)
-                {
-                    aimImage.color = hitAimColor;
-                    if (hitAimSprite != null)
-                        aimImage.sprite = hitAimSprite;
-                }
-
-                // Здесь можно добавить подсветку объекта
-                // HighlightObject(hit.collider.gameObject);
+                // Навели на интерактивный объект
+                currentInteractable = interactable;
+                UpdateAimVisual(true, interactable.GetInteractionPrompt());
             }
             else
             {
-                currentHitObject = null;
-
-                // Возвращаем обычный вид прицела
-                if (aimImage != null)
-                {
-                    aimImage.color = defaultAimColor;
-                    if (defaultAimSprite != null)
-                        aimImage.sprite = defaultAimSprite;
-                }
+                // Навели на обычный объект
+                currentInteractable = null;
+                UpdateAimVisual(false, "");
             }
         }
-
-        // Метод для получения объекта, на который сейчас наведен прицел
-        public GameObject GetCurrentAimTarget()
+        else
         {
-            return currentHitObject;
+            // Ничего не нашли
+            currentHitObject = null;
+            currentInteractable = null;
+            UpdateAimVisual(false, "");
         }
+    }
 
-        // Метод для проверки, наведен ли прицел на объект
-        public bool IsAimingAtObject()
-        {
-            return currentHitObject != null;
-        }
+    private void UpdateAimVisual(bool isInteractable, string prompt = "")
+    {
+        if (aimImage == null) return;
 
-        // Визуализация луча прицела в редакторе
-        private void OnDrawGizmosSelected()
+        if (isInteractable)
         {
-            if (playerCamera != null)
+            aimImage.color = interactableColor;
+            if (interactableAimSprite != null)
+                aimImage.sprite = interactableAimSprite;
+
+            // Показываем подсказку
+            if (interactionPromptText != null)
             {
-                Gizmos.color = Color.yellow;
-                Ray ray = playerCamera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
-                Gizmos.DrawRay(ray.origin, ray.direction * maxAimDistance);
+                interactionPromptText.text = prompt;
+                interactionPromptText.gameObject.SetActive(true);
             }
         }
+        else
+        {
+            aimImage.color = defaultColor;
+            if (defaultAimSprite != null)
+                aimImage.sprite = defaultAimSprite;
+
+            // Скрываем подсказку
+            if (interactionPromptText != null)
+                interactionPromptText.gameObject.SetActive(false);
+        }
+    }
+
+    private void OnInteractPerformed(InputAction.CallbackContext context)
+    {
+        if (currentInteractable != null)
+        {
+            currentInteractable.OnInteract();
+        }
+    }
+
+    public IInteractable GetCurrentInteractable()
+    {
+        return currentInteractable;
+    }
+
+    public GameObject GetCurrentTarget()
+    {
+        return currentHitObject;
+    }
+
+    public bool HasInteractable()
+    {
+        return currentInteractable != null;
+    }
+
+    private void OnEnable()
+    {
+        input.Enable();
+    }
+
+    private void OnDisable()
+    {
+        input.Disable();
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        if (playerCamera != null)
+        {
+            Gizmos.color = Color.yellow;
+            Ray ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward);
+            Gizmos.DrawRay(ray.origin, ray.direction * maxAimDistance);
+        }
+    }
 }
