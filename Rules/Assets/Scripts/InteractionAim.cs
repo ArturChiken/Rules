@@ -45,10 +45,10 @@ public class PlayerAim : MonoBehaviour
 
     private void Update()
         {
-            UpdateAim();
+            UpdateInteractionAim();
         }
 
-    private void UpdateAim()
+    private void UpdateInteractionAim()
     {
         if (playerCamera == null) return;
 
@@ -66,13 +66,13 @@ public class PlayerAim : MonoBehaviour
             {
                 // Навели на интерактивный объект
                 currentInteractable = interactable;
-                UpdateAimVisual(true, interactable.GetInteractionPrompt());
+                UpdateInteractionPrompt(true, interactable.GetInteractionPrompt());
             }
             else
             {
                 // Навели на обычный объект
                 currentInteractable = null;
-                UpdateAimVisual(false, "");
+                UpdateInteractionPrompt(false, "");
             }
         }
         else
@@ -80,11 +80,11 @@ public class PlayerAim : MonoBehaviour
             // Ничего не нашли
             currentHitObject = null;
             currentInteractable = null;
-            UpdateAimVisual(false, "");
+            UpdateInteractionPrompt(false, "");
         }
     }
 
-    private void UpdateAimVisual(bool isInteractable, string prompt = "")
+    private void UpdateInteractionPrompt(bool isInteractable, string prompt = "")
     {
         if (aimImage == null) return;
 
