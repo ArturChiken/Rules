@@ -1,7 +1,7 @@
-using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.UI;
+using DreamMovement;
 using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerAim : MonoBehaviour
 {
@@ -13,7 +13,7 @@ public class PlayerAim : MonoBehaviour
     [SerializeField] private Image aimImage;
     [SerializeField] private Sprite defaultAimSprite;
     [SerializeField] private Sprite interactableAimSprite;
-    [SerializeField] private TMP_Text interactionPromptText; // Текст для подсказки
+    [SerializeField] private TMP_Text interactionPromptText;
 
     [Header("Colors")]
     [SerializeField] private Color defaultColor = Color.white;
@@ -23,12 +23,29 @@ public class PlayerAim : MonoBehaviour
     private Camera playerCamera;
     private IInteractable currentInteractable;
     private GameObject currentHitObject;
-    private InputSystem_Actions input;
+    private PlayerControl playerControl;
 
     private void Awake()
     {
-        input = new InputSystem_Actions();
-        input.Player.Interact.performed += OnInteractPerformed;
+        playerControl = GetComponent<PlayerControl>();
+        if (playerControl == null)
+            playerControl = FindFirstObjectByType<PlayerControl>();
+    }
+
+    private void OnEnable()
+    {
+        if (playerControl != null)
+        {
+            playerControl.OnInteract += HandleInteract;
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (playerControl != null)
+        {
+            playerControl.OnInteract -= HandleInteract;
+        }
     }
 
     private void Start()
@@ -38,15 +55,14 @@ public class PlayerAim : MonoBehaviour
         if (playerCamera == null)
             playerCamera = GetComponent<Camera>();
 
-        // Скрываем текст подсказки по умолчанию
         if (interactionPromptText != null)
             interactionPromptText.gameObject.SetActive(false);
     }
 
     private void Update()
-        {
-            UpdateInteractionAim();
-        }
+    {
+        UpdateInteractionAim();
+    }
 
     private void UpdateInteractionAim()
     {
@@ -58,26 +74,21 @@ public class PlayerAim : MonoBehaviour
         if (Physics.Raycast(ray, out hit, maxAimDistance, aimLayers))
         {
             currentHitObject = hit.collider.gameObject;
-
-            // Проверяем, есть ли интерфейс IInteractable на объекте или его родителях
             IInteractable interactable = hit.collider.GetComponent<IInteractable>();
 
             if (interactable != null && interactable.CanInteract())
             {
-                // Навели на интерактивный объект
                 currentInteractable = interactable;
                 UpdateInteractionPrompt(true, interactable.GetInteractionPrompt());
             }
             else
             {
-                // Навели на обычный объект
                 currentInteractable = null;
                 UpdateInteractionPrompt(false, "");
             }
         }
         else
         {
-            // Ничего не нашли
             currentHitObject = null;
             currentInteractable = null;
             UpdateInteractionPrompt(false, "");
@@ -94,7 +105,6 @@ public class PlayerAim : MonoBehaviour
             if (interactableAimSprite != null)
                 aimImage.sprite = interactableAimSprite;
 
-            // Показываем подсказку
             if (interactionPromptText != null)
             {
                 interactionPromptText.text = prompt;
@@ -107,13 +117,12 @@ public class PlayerAim : MonoBehaviour
             if (defaultAimSprite != null)
                 aimImage.sprite = defaultAimSprite;
 
-            // Скрываем подсказку
             if (interactionPromptText != null)
                 interactionPromptText.gameObject.SetActive(false);
         }
     }
 
-    private void OnInteractPerformed(InputAction.CallbackContext context)
+    private void HandleInteract()
     {
         if (currentInteractable != null)
         {
@@ -121,30 +130,9 @@ public class PlayerAim : MonoBehaviour
         }
     }
 
-    public IInteractable GetCurrentInteractable()
-    {
-        return currentInteractable;
-    }
-
-    public GameObject GetCurrentTarget()
-    {
-        return currentHitObject;
-    }
-
-    public bool HasInteractable()
-    {
-        return currentInteractable != null;
-    }
-
-    private void OnEnable()
-    {
-        input.Enable();
-    }
-
-    private void OnDisable()
-    {
-        input.Disable();
-    }
+    public IInteractable GetCurrentInteractable() => currentInteractable;
+    public GameObject GetCurrentTarget() => currentHitObject;
+    public bool HasInteractable() => currentInteractable != null;
 
     private void OnDrawGizmosSelected()
     {
