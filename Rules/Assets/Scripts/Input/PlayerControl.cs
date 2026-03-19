@@ -19,6 +19,8 @@ namespace DreamMovement
         public InputSystem_Actions InputActions => inputActions;
 
         // События для всех действий (чтобы другие классы могли подписываться)
+        
+        // Встроенные события
         public System.Action<Vector2> OnMove;
         public System.Action<Vector2> OnLook;
         public System.Action OnJump;
@@ -28,6 +30,10 @@ namespace DreamMovement
         public System.Action OnSprint;
         public System.Action OnPrevious;
         public System.Action OnNext;
+
+        // Невстроенные события
+        public System.Action<int> OnSlotSelected;
+        public System.Action<float> OnScrollWheel;
 
         private void Awake()
         {
@@ -60,6 +66,12 @@ namespace DreamMovement
             inputActions.Player.Sprint.performed += OnSprintPerformed;
             inputActions.Player.Previous.performed += OnPreviousPerformed;
             inputActions.Player.Next.performed += OnNextPerformed;
+
+            inputActions.Player.Slot1.performed += OnSlot1Performed;
+            inputActions.Player.Slot2.performed += OnSlot2Performed;
+            inputActions.Player.Slot3.performed += OnSlot3Performed;
+            inputActions.Player.Slot4.performed += OnSlot4Performed;
+            inputActions.Player.ScrollWheel.performed += OnScrollWheelPerformed;
         }
 
         private void OnDisable()
@@ -78,6 +90,11 @@ namespace DreamMovement
             inputActions.Player.Sprint.performed -= OnSprintPerformed;
             inputActions.Player.Previous.performed -= OnPreviousPerformed;
             inputActions.Player.Next.performed -= OnNextPerformed;
+            inputActions.Player.Slot1.performed -= OnSlot1Performed;
+            inputActions.Player.Slot2.performed -= OnSlot2Performed;
+            inputActions.Player.Slot3.performed -= OnSlot3Performed;
+            inputActions.Player.Slot4.performed -= OnSlot4Performed;
+            inputActions.Player.ScrollWheel.performed -= OnScrollWheelPerformed;
 
             inputActions.Disable();
         }
@@ -139,6 +156,36 @@ namespace DreamMovement
         {
             OnNext?.Invoke();
         }
+
+        private void OnSlot1Performed(InputAction.CallbackContext context)
+        {
+            Debug.Log("Нажата клавиша 1!");
+            OnSlotSelected?.Invoke(0);
+        }
+
+        private void OnSlot2Performed(InputAction.CallbackContext context)
+        {
+            OnSlotSelected?.Invoke(1);
+        }
+
+        private void OnSlot3Performed(InputAction.CallbackContext context)
+        {
+            OnSlotSelected?.Invoke(2);
+        }
+
+        private void OnSlot4Performed(InputAction.CallbackContext context)
+        {
+            OnSlotSelected?.Invoke(3);
+        }
+
+        private void OnScrollWheelPerformed(InputAction.CallbackContext context)
+        {
+            Vector2 value = context.ReadValue<Vector2>(); 
+            OnScrollWheel?.Invoke(value.y); 
+        }
+
+
+
 
         // Методы для прямого доступа к значениям (для тех, кому удобнее)
         public Vector2 GetMoveInput()

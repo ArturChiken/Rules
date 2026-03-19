@@ -8,7 +8,7 @@ public abstract class InteractableBase : MonoBehaviour, IInteractable
 
     public virtual void OnInteract()
     {
-        // Будет переопределено в дочерних классах
+        Debug.Log($"Взаимодействие с {gameObject.name}");
     }
 
     public virtual string GetInteractionPrompt()
