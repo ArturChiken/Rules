@@ -153,9 +153,14 @@ MonoBehaviour:
   config:
     speed: 5
     gravitySpeed: 9.8
-    jumpForce: 2
+    jumpForce: 3.5
     _verticalVelocity: 0
     bodyTransform: {fileID: 1701224267}
+    maxAirSpeed: 6.5
+    airControl: 0.3
+    airDrag: 0.2
+    airDragMultiplier: 1
+    autoJump: 0
 --- !u!143 &7280961
 CharacterController:
   m_ObjectHideFlags: 0
@@ -211,7 +216,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DreamMovement.AimMove
   bodyTransform: {fileID: 1701224267}
-  sensitivityMultiplier: 1
+  sensitivityMultiplier: 0.2
   horizontalSensitivity: 1
   verticalSensitivity: 1
   minYRotation: -90
@@ -324,8 +329,8 @@ Transform:
   m_GameObject: {fileID: 221133999}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.22055, y: 0.76, z: -9.47404}
-  m_LocalScale: {x: 27.17, y: 1, z: 51.39}
+  m_LocalPosition: {x: 0.22055, y: 0.76, z: -9.474}
+  m_LocalScale: {x: 263.47018, y: 1, z: 422.03525}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1232,7 +1237,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -6.42, y: 1.81, z: -21.35822}
-  m_LocalScale: {x: -2.32, y: -2.32, z: -2.32}
+  m_LocalScale: {x: 2.32, y: 2.32, z: 2.32}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
