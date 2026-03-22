@@ -152,14 +152,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CharacterMove
   config:
     speed: 5
-    gravitySpeed: 9.8
-    jumpForce: 3.5
+    gravitySpeed: 19.2
+    jumpForce: 5
     _verticalVelocity: 0
     bodyTransform: {fileID: 1701224267}
     maxAirSpeed: 6.5
     airControl: 0.3
-    airDrag: 0.2
-    airDragMultiplier: 1
+    airDrag: 1
+    airDragMultiplier: 2
     autoJump: 0
 --- !u!143 &7280961
 CharacterController:
