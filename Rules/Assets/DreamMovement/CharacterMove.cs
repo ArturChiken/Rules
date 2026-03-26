@@ -1,3 +1,4 @@
+using System.Data;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -17,6 +18,8 @@ namespace DreamMovement
 
             data.input.Player.Move.performed += OnMovePerformed;
             data.input.Player.Move.canceled += OnMoveCanceled;
+
+            data.input.Player.Noclip.performed += OnNoclipPerformed;
         }
 
         private void Start()
@@ -28,6 +31,20 @@ namespace DreamMovement
 
         private void Update()
         {
+            if (data.isNoclip)
+            {
+                HandleNoclipMovement();
+
+                data.controller.Move(data.currentVelocity *  Time.deltaTime);
+
+                if (data.isNoclip) //config.noclipSpeedMultiplier > 0
+                {
+                    transform.position = data.controller.transform.position;
+                }
+
+                data.wasGrounded = false;
+                return;
+            }
 
             if (data.controller.isGrounded && !data.wasGrounded)
             {
@@ -70,6 +87,8 @@ namespace DreamMovement
             {
                 moveDirection.Normalize();
             }
+
+            Transform referenceTransform = data.isNoclip ? transform : config.bodyTransform;
 
             Vector3 bodyForward = config.bodyTransform.forward;
             bodyForward.y = 0;
@@ -148,10 +167,14 @@ namespace DreamMovement
 
         private void JumpHandler()
         {
-            if (data.controller.isGrounded)
+            if (data.controller.isGrounded && !data.isNoclip)
             {
                 config.SetVerticalVelocity(config.jumpForce);
                 data.currentVelocity.y = config.jumpForce;
+            }
+            else if (data.isNoclip)
+            {
+                data.currentVelocity.y = config.speed * 0.8f;
             }
         }
 
@@ -163,6 +186,73 @@ namespace DreamMovement
         private void OnMoveCanceled(InputAction.CallbackContext context)
         {
             data.move = Vector2.zero;
+        }
+
+        public void OnNoclipPerformed(InputAction.CallbackContext context)
+        {
+            ToggleNoclip();
+        }
+
+        public void ToggleNoclip()
+        {
+            data.isNoclip = !data.isNoclip;
+
+            if (data.isNoclip)
+            {
+                EnableNoclip();
+            }
+            else
+            {
+                DisableNoclip();
+            }
+        }
+
+        public void EnableNoclip()
+        {
+            data.noclipVelocity = data.currentVelocity;
+
+            config.SetVerticalVelocity(0);
+
+            if (config.noclipDisableCollisions)
+            {
+                data.controller.detectCollisions = false;
+            }
+            Debug.Log("Noclip enabled");
+        }
+
+        public void DisableNoclip()
+        {
+            if (config.noclipDisableCollisions)
+            {
+                data.controller.detectCollisions = true;
+            }
+
+            if (!data.controller.isGrounded)
+            {
+                RaycastHit hit;
+                if (Physics.Raycast(transform.position, Vector3.down, out hit, 10f))
+                {
+                    Vector3 newPosition = transform.position;
+                    newPosition.y = hit.point.y + data.controller.height / 2;
+                    data.controller.transform.position = newPosition;
+                }
+            }
+
+            Debug.Log("Noclip disabled");
+        }
+
+        public void HandleNoclipMovement()
+        {
+            Vector3 dir = GetDesiredMoveDirection(data.move);
+
+            Vector3 targetVelocity = dir * config.speed;
+
+            data.noclipVelocity = Vector3.Lerp(data.noclipVelocity, targetVelocity, Time.deltaTime * 8f);
+            data.currentVelocity = data.noclipVelocity;
+
+            config.SetVerticalVelocity(0);
+
+            config.bodyTransform.eulerAngles = Vector3.Scale(transform.eulerAngles, new Vector3(0f, 1f, 0f));
         }
 
         private void OnEnable()

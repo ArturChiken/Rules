@@ -20,6 +20,7 @@ namespace DreamMovement
         public float airDrag = 0.95f;
         public float airDragMultiplier = 2f;
         public bool autoJump = false;
+        public bool noclipDisableCollisions = true;
 
         public float GetVerticalVelocity()
         {
