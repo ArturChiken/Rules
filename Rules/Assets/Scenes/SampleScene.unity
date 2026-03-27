@@ -519,6 +519,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &832828115 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8560945271718126986, guid: 10c3051c839d97e4cacbb2ac076affb1, type: 3}
+  m_PrefabInstance: {fileID: 1777981571713807439}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &881015586
 GameObject:
   m_ObjectHideFlags: 0
@@ -863,6 +868,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1071692079733763490, guid: 10c3051c839d97e4cacbb2ac076affb1, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5574840193977428562, guid: 10c3051c839d97e4cacbb2ac076affb1, type: 3}
+      propertyPath: config
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5574840193977428562, guid: 10c3051c839d97e4cacbb2ac076affb1, type: 3}
+      propertyPath: config.maxAirSpeed
+      value: 1450
+      objectReference: {fileID: 0}
+    - target: {fileID: 5574840193977428562, guid: 10c3051c839d97e4cacbb2ac076affb1, type: 3}
+      propertyPath: config.noclipSpeed
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 5574840193977428562, guid: 10c3051c839d97e4cacbb2ac076affb1, type: 3}
+      propertyPath: config.bodyTransform
+      value: 
+      objectReference: {fileID: 832828115}
+    - target: {fileID: 6080133753808540220, guid: 10c3051c839d97e4cacbb2ac076affb1, type: 3}
+      propertyPath: bodyTransform
+      value: 
+      objectReference: {fileID: 832828115}
     - target: {fileID: 8797712669436465122, guid: 10c3051c839d97e4cacbb2ac076affb1, type: 3}
       propertyPath: m_Name
       value: Player

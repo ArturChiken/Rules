@@ -9,6 +9,7 @@ namespace DreamMovement
         [SerializeField] public ConfigMove config;
         public DataMove data;
 
+        private int originalExcludeLayers;
 
         private void Awake()
         {
@@ -27,6 +28,13 @@ namespace DreamMovement
             data.controller = GetComponent<CharacterController>();
 
             data.wasGrounded = data.controller.isGrounded;
+
+            originalExcludeLayers = data.controller.excludeLayers;
+
+            if (config.bodyTransform == null)
+            {
+                Debug.LogError("bodyTransform not assigned in ConfigMove!");
+            }
         }
 
         private void Update()
@@ -35,9 +43,9 @@ namespace DreamMovement
             {
                 HandleNoclipMovement();
 
-                data.controller.Move(data.currentVelocity *  Time.deltaTime);
+                data.controller.Move(data.currentVelocity * Time.deltaTime);
 
-                if (data.isNoclip) //config.noclipSpeedMultiplier > 0
+                if (config.speed > 0) //config.noclipSpeedMultiplier > 0
                 {
                     transform.position = data.controller.transform.position;
                 }
@@ -88,17 +96,38 @@ namespace DreamMovement
                 moveDirection.Normalize();
             }
 
-            Transform referenceTransform = data.isNoclip ? transform : config.bodyTransform;
+            
 
-            Vector3 bodyForward = config.bodyTransform.forward;
-            bodyForward.y = 0;
-            bodyForward.Normalize();
+            if (data.isNoclip)
+            {
+                Transform cameraTransform = transform;
 
-            Vector3 bodyRight = config.bodyTransform.right;
-            bodyRight.y = 0;
-            bodyRight.Normalize();
+                Vector3 forward = cameraTransform.forward;
+                Vector3 right = cameraTransform.right;
 
-            return (bodyForward * moveDirection.z + bodyRight * moveDirection.x).normalized;
+                Vector3 moveVector = (forward * moveDirection.z + right * moveDirection.x).normalized;
+
+                if (move.magnitude <0.1f)
+                {
+                    return Vector3.zero;
+                }
+                return moveVector;
+            }
+            else
+            {
+                Transform referenceTransform = config.bodyTransform != null ? config.bodyTransform : transform;
+                Vector3 forward = referenceTransform.forward;
+                Vector3 right = referenceTransform.right;
+
+
+                forward.y = 0;
+                forward.Normalize();
+
+                right.y = 0;
+                right.Normalize();
+
+                return (forward * moveDirection.z + right * moveDirection.x).normalized;
+            }
         }
 
         private void HandleGroundedMovement(Vector3 dir)
@@ -118,7 +147,9 @@ namespace DreamMovement
         {
             Vector3 horizontalVelocity = new Vector3(data.currentVelocity.x, 0, data.currentVelocity.z);
 
-            horizontalVelocity -= horizontalVelocity * config.airDrag * Time.deltaTime * config.airDragMultiplier;
+            float airResistance = 1 - config.airDrag;
+
+            horizontalVelocity -= horizontalVelocity * airResistance * Time.deltaTime * config.airDragMultiplier;
 
             if (dir.magnitude > 0.1f)
             {
@@ -174,7 +205,7 @@ namespace DreamMovement
             }
             else if (data.isNoclip)
             {
-                data.currentVelocity.y = config.speed * 0.8f;
+                Debug.Log("Cannot jump in noclip mode");
             }
         }
 
@@ -213,19 +244,16 @@ namespace DreamMovement
 
             config.SetVerticalVelocity(0);
 
-            if (config.noclipDisableCollisions)
-            {
-                data.controller.detectCollisions = false;
-            }
+            data.controller.detectCollisions = false;
+            data.controller.excludeLayers = ~0;
+
             Debug.Log("Noclip enabled");
         }
 
         public void DisableNoclip()
         {
-            if (config.noclipDisableCollisions)
-            {
-                data.controller.detectCollisions = true;
-            }
+            data.controller.detectCollisions = true;
+            data.controller.excludeLayers = originalExcludeLayers;
 
             if (!data.controller.isGrounded)
             {
@@ -243,16 +271,36 @@ namespace DreamMovement
 
         public void HandleNoclipMovement()
         {
-            Vector3 dir = GetDesiredMoveDirection(data.move);
+            Vector2 inputMove = data.move;
 
-            Vector3 targetVelocity = dir * config.speed;
+            if (inputMove.magnitude < 0.1f)
+            {
+                data.noclipVelocity = Vector3.Lerp(data.noclipVelocity, Vector3.zero, Time.deltaTime * 5f);
+                data.currentVelocity = data.noclipVelocity;
+                return;
+            }
+
+            Vector3 moveDirection = new Vector3(inputMove.x, 0, inputMove.y);
+            if (moveDirection.magnitude > 1f)
+            {
+                moveDirection.Normalize();
+            }
+
+            Transform cameraTransform = transform;
+            Vector3 forward = cameraTransform.forward;
+            Vector3 right = cameraTransform.right;
+
+            Vector3 targetVelocity = (forward * moveDirection.z + right * moveDirection.x).normalized * config.noclipSpeed;
 
             data.noclipVelocity = Vector3.Lerp(data.noclipVelocity, targetVelocity, Time.deltaTime * 8f);
             data.currentVelocity = data.noclipVelocity;
 
             config.SetVerticalVelocity(0);
 
-            config.bodyTransform.eulerAngles = Vector3.Scale(transform.eulerAngles, new Vector3(0f, 1f, 0f));
+            if (config.bodyTransform != null)
+            {
+                config.bodyTransform.eulerAngles = Vector3.Scale(transform.eulerAngles, new Vector3(0f, 1f, 0f));
+            }
         }
 
         private void OnEnable()
@@ -263,6 +311,12 @@ namespace DreamMovement
         private void OnDisable()
         {
             data.input.Disable();
+        }
+
+        private void OnDestroy()
+        {
+            data.controller.detectCollisions = true;
+            data.controller.excludeLayers = originalExcludeLayers;
         }
     }
 }
