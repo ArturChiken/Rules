@@ -5,7 +5,7 @@ namespace DreamMovement
     [RequireComponent(typeof(CharacterController))]
     public class DataMove
     {
-        public InputSystem_Actions input;
+
         public CharacterController controller;
         public Vector2 move;
 
@@ -16,9 +16,5 @@ namespace DreamMovement
         public bool wasNoclip = false;
         public Vector3 noclipVelocity;
 
-        public DataMove()
-        {
-            input = new InputSystem_Actions();
-        }
     }
 }

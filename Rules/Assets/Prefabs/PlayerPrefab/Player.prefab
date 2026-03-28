@@ -293,6 +293,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8944453586990192034}
   - component: {fileID: 1071692079733763490}
+  - component: {fileID: 4458768266751634034}
   - component: {fileID: 5574840193977428562}
   - component: {fileID: 6080133753808540220}
   m_Layer: 0
@@ -344,6 +345,20 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4458768266751634034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8797712669436465122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28218659c8654044e8bbc9312b8c373a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DreamMovement.PlayerControl
+  cursorLocked: 1
+  cursorVisible: 0
 --- !u!114 &5574840193977428562
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -367,6 +382,8 @@ MonoBehaviour:
     airDrag: 1
     airDragMultiplier: 2
     autoJump: 0
+    noclipDisableCollisions: 1
+    noclipSpeed: 15
 --- !u!114 &6080133753808540220
 MonoBehaviour:
   m_ObjectHideFlags: 0

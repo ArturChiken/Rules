@@ -1354,7 +1354,7 @@ MonoBehaviour:
   enableMinute: 1
   enableSecond: 0
   timeScale: 3600
-  useRealtimeForDebug: 1
+  useRealtimeForDebug: 0
   startYear: 2024
   startMonth: 1
   startDay: 1

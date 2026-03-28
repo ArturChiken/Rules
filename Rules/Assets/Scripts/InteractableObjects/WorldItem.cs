@@ -29,7 +29,7 @@ public class WorldItem : InteractableBase
 
             if (added)
             {
-                Debug.Log($"Подобрано: {itemData.itemName} x{amount}");
+                Debug.Log($"Подобрано: {itemData.itemName} x {amount}");
                 Destroy(gameObject);
             }
             else

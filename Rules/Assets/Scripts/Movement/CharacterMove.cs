@@ -8,20 +8,31 @@ namespace DreamMovement
     {
         [SerializeField] public ConfigMove config;
         public DataMove data;
+        private PlayerControl playerControl;
 
         private int originalExcludeLayers;
 
         private void Awake()
         {
             data = new DataMove();
-
-            data.input.Player.Jump.performed += OnJumpPerformed;
-
-            data.input.Player.Move.performed += OnMovePerformed;
-            data.input.Player.Move.canceled += OnMoveCanceled;
-
-            data.input.Player.Noclip.performed += OnNoclipPerformed;
+            playerControl = FindFirstObjectByType<PlayerControl>();
         }
+
+        private void OnEnable()
+        {
+            playerControl.OnJump += JumpHandler;
+            playerControl.OnMove += MoveHandler;
+            playerControl.OnNoclip += ToggleNoclip;
+        }
+
+        private void OnDisable()
+        {
+            playerControl.OnJump -= JumpHandler;
+            playerControl.OnMove -= MoveHandler;
+            playerControl.OnNoclip -= ToggleNoclip;
+        }
+
+
 
         private void Start()
         {
@@ -91,7 +102,7 @@ namespace DreamMovement
             }
             Vector3 moveDirection = new Vector3(move.x, 0, move.y);
 
-            if (move.magnitude > 1f);
+            if (move.magnitude > 1f)
             {
                 moveDirection.Normalize();
             }
@@ -191,11 +202,6 @@ namespace DreamMovement
             }
         }
 
-        private void OnJumpPerformed(InputAction.CallbackContext context)
-        {
-            JumpHandler();
-        }
-
         private void JumpHandler()
         {
             if (data.controller.isGrounded && !data.isNoclip)
@@ -209,15 +215,12 @@ namespace DreamMovement
             }
         }
 
-        private void OnMovePerformed(InputAction.CallbackContext context)
+
+        private void MoveHandler(Vector2 moveValue)
         {
-            data.move = context.ReadValue<Vector2>();
+            data.move = moveValue;
         }
 
-        private void OnMoveCanceled(InputAction.CallbackContext context)
-        {
-            data.move = Vector2.zero;
-        }
 
         public void OnNoclipPerformed(InputAction.CallbackContext context)
         {
@@ -303,15 +306,6 @@ namespace DreamMovement
             }
         }
 
-        private void OnEnable()
-        {
-            data.input.Enable();
-        }
-
-        private void OnDisable()
-        {
-            data.input.Disable();
-        }
 
         private void OnDestroy()
         {

@@ -29,45 +29,38 @@ namespace DreamMovement
         [HideInInspector]
         public Vector2 punchAngleVel;
 
-
-        private InputSystem_Actions input;
-        private InputAction action;
+        private PlayerControl playerControl;
 
         private void Awake()
         {
-            input = new InputSystem_Actions();
-            action = input.Player.Look;
+            playerControl = FindFirstObjectByType<PlayerControl>();
         }
 
         private void OnEnable()
         {
-            input.Enable();
+            playerControl.OnLook += HandleLook;
         }
 
         private void OnDisable()
         {
-            input.Disable();
+            playerControl.OnLook -= HandleLook;
         }
 
-        private void Start()
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-        }
-
-        private void Update()
+        private void HandleLook(Vector2 lookInput)
         {
             if (Mathf.Abs(Time.timeScale) <= 0)
                 return;
-
-            DecayPunchAngle();
-
-            Vector2 lookInput = action.ReadValue<Vector2>();
-
             float xMovement = lookInput.x * horizontalSensitivity * sensitivityMultiplier;
             float yMovement = -lookInput.y * verticalSensitivity * sensitivityMultiplier;
 
             realRotation = new Vector3(Mathf.Clamp(realRotation.x + yMovement, minYRotation, maxYRotation), realRotation.y + xMovement, realRotation.z);
+        }
+
+
+        private void Update()
+        {
+            DecayPunchAngle();
+            
             realRotation.z = Mathf.Lerp(realRotation.z, 0f, Time.deltaTime * 3f);
 
             bodyTransform.rotation = Quaternion.Euler(0f, realRotation.y, 0f);

@@ -30,6 +30,7 @@ namespace DreamMovement
         public System.Action OnSprint;
         public System.Action OnPrevious;
         public System.Action OnNext;
+        public System.Action OnNoclip;
 
         // Невстроенные события
         public System.Action<int> OnSlotSelected;
@@ -66,6 +67,7 @@ namespace DreamMovement
             inputActions.Player.Sprint.performed += OnSprintPerformed;
             inputActions.Player.Previous.performed += OnPreviousPerformed;
             inputActions.Player.Next.performed += OnNextPerformed;
+            inputActions.Player.Noclip.performed += OnNoclipPerformed;
 
             inputActions.Player.Slot1.performed += OnSlot1Performed;
             inputActions.Player.Slot2.performed += OnSlot2Performed;
@@ -90,6 +92,8 @@ namespace DreamMovement
             inputActions.Player.Sprint.performed -= OnSprintPerformed;
             inputActions.Player.Previous.performed -= OnPreviousPerformed;
             inputActions.Player.Next.performed -= OnNextPerformed;
+            inputActions.Player.Noclip.performed -= OnNoclipPerformed;
+
             inputActions.Player.Slot1.performed -= OnSlot1Performed;
             inputActions.Player.Slot2.performed -= OnSlot2Performed;
             inputActions.Player.Slot3.performed -= OnSlot3Performed;
@@ -109,6 +113,7 @@ namespace DreamMovement
         {
             OnMove?.Invoke(Vector2.zero);
         }
+
 
         // Обработчики Look
         private void OnLookPerformed(InputAction.CallbackContext context)
@@ -157,6 +162,11 @@ namespace DreamMovement
             OnNext?.Invoke();
         }
 
+        private void OnNoclipPerformed(InputAction.CallbackContext context)
+        {
+            OnNoclip?.Invoke();
+        }
+
         private void OnSlot1Performed(InputAction.CallbackContext context)
         {
             Debug.Log("Нажата клавиша 1!");
@@ -180,12 +190,9 @@ namespace DreamMovement
 
         private void OnScrollWheelPerformed(InputAction.CallbackContext context)
         {
-            Vector2 value = context.ReadValue<Vector2>(); 
-            OnScrollWheel?.Invoke(value.y); 
+            Vector2 value = context.ReadValue<Vector2>();
+            OnScrollWheel?.Invoke(value.y);
         }
-
-
-
 
         // Методы для прямого доступа к значениям (для тех, кому удобнее)
         public Vector2 GetMoveInput()
