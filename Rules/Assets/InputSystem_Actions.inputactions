@@ -28,7 +28,7 @@
                     "name": "Attack",
                     "type": "Button",
                     "id": "6c2ab1b8-8984-453a-af3d-a3c78ae1679a",
-                    "expectedControlType": "",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -39,14 +39,14 @@
                     "id": "852140f2-7766-474d-8707-702459ba45f3",
                     "expectedControlType": "",
                     "processors": "",
-                    "interactions": "",
+                    "interactions": "Hold",
                     "initialStateCheck": false
                 },
                 {
                     "name": "Crouch",
                     "type": "Button",
                     "id": "27c5f898-bc57-4ee1-8800-db469aca5fe3",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -88,49 +88,13 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Slot1",
+                    "name": "Noclip",
                     "type": "Button",
-                    "id": "11aabb80-aa24-4241-832a-c9f81f55defc",
+                    "id": "821c9f13-dde3-4caa-8a98-892f999804ea",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
-                },
-                {
-                    "name": "Slot2",
-                    "type": "Button",
-                    "id": "59e48568-3d71-4608-a8bd-37fd30be2842",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Slot3",
-                    "type": "Button",
-                    "id": "4b1c2571-3371-4c7b-90ca-d5902f140795",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Slot4",
-                    "type": "Button",
-                    "id": "c6e49bd0-c5f1-4b7a-8eb6-6dc93f7cadcf",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "ScrollWheel",
-                    "type": "Value",
-                    "id": "b2d595fb-e3cb-43cf-ae79-1a09e12eede8",
-                    "expectedControlType": "Axis",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -251,17 +215,6 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "XR",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "3ea4d645-4504-4529-b061-ab81934c3752",
-                    "path": "<Joystick>/stick",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Joystick",
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -521,56 +474,12 @@
                 },
                 {
                     "name": "",
-                    "id": "43ad8e5c-5a63-49c0-a1c0-2ce6b431c786",
-                    "path": "<Keyboard>/1",
+                    "id": "a69c5b42-7acd-4dcd-9e18-a28f76080f1c",
+                    "path": "<Keyboard>/v",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
-                    "action": "Slot1",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "ebc31b61-cf71-41e1-b1d0-c7a082bc4a18",
-                    "path": "<Keyboard>/2",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Slot2",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "fda4cfbe-52cb-4538-9850-1337b8f5154b",
-                    "path": "<Keyboard>/3",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Slot3",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "a0be5321-10f5-4799-86ef-e3225ae8f607",
-                    "path": "<Keyboard>/4",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Slot4",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "af1615e8-bf69-4261-b015-bce5f6f551c0",
-                    "path": "<Mouse>/scroll",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "ScrollWheel",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Noclip",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
