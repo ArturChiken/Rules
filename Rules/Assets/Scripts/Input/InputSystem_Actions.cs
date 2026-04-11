@@ -125,7 +125,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""id"": ""852140f2-7766-474d-8707-702459ba45f3"",
                     ""expectedControlType"": """",
                     ""processors"": """",
-                    ""interactions"": ""Hold"",
+                    ""interactions"": """",
                     ""initialStateCheck"": false
                 },
                 {
@@ -222,6 +222,132 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""name"": ""ScrollWheel"",
                     ""type"": ""Button"",
                     ""id"": ""27160a6e-3ccf-4e99-9410-db8fad56998c"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ToggleWatch"",
+                    ""type"": ""Button"",
+                    ""id"": ""86596bf9-ddac-40c3-901c-d87a0c0e8e54"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""WatchLeftClick"",
+                    ""type"": ""Button"",
+                    ""id"": ""919ce263-98bc-4e92-87d1-3c62c36f3224"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""WatchRightClick"",
+                    ""type"": ""Button"",
+                    ""id"": ""75aa49e9-68d9-419a-b779-c1275af29e6c"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""WatchBackspace"",
+                    ""type"": ""Button"",
+                    ""id"": ""b0be5d7a-c125-411e-a877-c8fb7e99a5d8"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Digit0"",
+                    ""type"": ""Button"",
+                    ""id"": ""853544f7-48b8-4f64-b3dd-eb2acea7c8d2"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Digit1"",
+                    ""type"": ""Button"",
+                    ""id"": ""8f3c4e4a-fe49-42fa-aa6a-a1c4f8466279"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Digit2"",
+                    ""type"": ""Button"",
+                    ""id"": ""cb3b90e9-8764-4771-8299-773a9628160b"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Digit3"",
+                    ""type"": ""Button"",
+                    ""id"": ""2a96e7fc-af69-4a9e-ba0d-3798ab6fd825"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Digit4"",
+                    ""type"": ""Button"",
+                    ""id"": ""75cafd2b-5f33-41a2-87e4-97385ea00719"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Digit5"",
+                    ""type"": ""Button"",
+                    ""id"": ""780af892-51b0-4c95-869c-6e9251b51c5c"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Digit6"",
+                    ""type"": ""Button"",
+                    ""id"": ""f524295f-ae9a-4230-84c9-321f53f88133"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Digit7"",
+                    ""type"": ""Button"",
+                    ""id"": ""d4d7a8f2-408b-4c91-be65-e3303ed5d40f"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Digit8"",
+                    ""type"": ""Button"",
+                    ""id"": ""9cc9d6e0-2741-48a7-9023-147358b7ab96"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Digit9"",
+                    ""type"": ""Button"",
+                    ""id"": ""37e602bc-7583-451f-b79d-d0751c8d6f44"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -666,6 +792,160 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
                     ""action"": ""ScrollWheel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ec47c7e8-d21c-44f8-8eb3-34519a20accc"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""ToggleWatch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5dd6fe2c-561a-4197-9e8d-a3d374507f33"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""WatchLeftClick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""54e85918-e64e-4f24-b18b-bb78a3a61ba1"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""WatchRightClick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""acad07ee-8756-4e60-b89a-8935c739a339"",
+                    ""path"": ""<Keyboard>/backspace"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""WatchBackspace"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ef80d6cb-d9fe-406b-9cb4-e20aaaa2083a"",
+                    ""path"": ""<Keyboard>/0"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Digit0"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bff3e69f-784a-4a08-ba13-cdc9d61c314e"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Digit1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""221ea0a2-215a-4666-b681-5247b5c667e3"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Digit2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""01d5ad0b-0ab5-400b-99e7-b254c2376504"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Digit3"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""25caa799-1504-48cf-b4e4-4441a33f6860"",
+                    ""path"": ""<Keyboard>/4"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Digit4"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""94585722-d858-4748-a3b3-3b6334a0cd56"",
+                    ""path"": ""<Keyboard>/5"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Digit5"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""32fd8018-a8e7-44a1-b3c3-62354d6d14fe"",
+                    ""path"": ""<Keyboard>/6"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Digit6"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a09ee494-4cee-4192-a34f-119c0d6ddf6d"",
+                    ""path"": ""<Keyboard>/7"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Digit7"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7f48f989-75d7-4506-a376-31686fd36caa"",
+                    ""path"": ""<Keyboard>/8"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Digit8"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""13b1a6f6-024c-4b30-9a16-2470afd563d9"",
+                    ""path"": ""<Keyboard>/9"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Digit9"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1268,6 +1548,20 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         m_Player_Slot3 = m_Player.FindAction("Slot3", throwIfNotFound: true);
         m_Player_Slot4 = m_Player.FindAction("Slot4", throwIfNotFound: true);
         m_Player_ScrollWheel = m_Player.FindAction("ScrollWheel", throwIfNotFound: true);
+        m_Player_ToggleWatch = m_Player.FindAction("ToggleWatch", throwIfNotFound: true);
+        m_Player_WatchLeftClick = m_Player.FindAction("WatchLeftClick", throwIfNotFound: true);
+        m_Player_WatchRightClick = m_Player.FindAction("WatchRightClick", throwIfNotFound: true);
+        m_Player_WatchBackspace = m_Player.FindAction("WatchBackspace", throwIfNotFound: true);
+        m_Player_Digit0 = m_Player.FindAction("Digit0", throwIfNotFound: true);
+        m_Player_Digit1 = m_Player.FindAction("Digit1", throwIfNotFound: true);
+        m_Player_Digit2 = m_Player.FindAction("Digit2", throwIfNotFound: true);
+        m_Player_Digit3 = m_Player.FindAction("Digit3", throwIfNotFound: true);
+        m_Player_Digit4 = m_Player.FindAction("Digit4", throwIfNotFound: true);
+        m_Player_Digit5 = m_Player.FindAction("Digit5", throwIfNotFound: true);
+        m_Player_Digit6 = m_Player.FindAction("Digit6", throwIfNotFound: true);
+        m_Player_Digit7 = m_Player.FindAction("Digit7", throwIfNotFound: true);
+        m_Player_Digit8 = m_Player.FindAction("Digit8", throwIfNotFound: true);
+        m_Player_Digit9 = m_Player.FindAction("Digit9", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1376,6 +1670,20 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Slot3;
     private readonly InputAction m_Player_Slot4;
     private readonly InputAction m_Player_ScrollWheel;
+    private readonly InputAction m_Player_ToggleWatch;
+    private readonly InputAction m_Player_WatchLeftClick;
+    private readonly InputAction m_Player_WatchRightClick;
+    private readonly InputAction m_Player_WatchBackspace;
+    private readonly InputAction m_Player_Digit0;
+    private readonly InputAction m_Player_Digit1;
+    private readonly InputAction m_Player_Digit2;
+    private readonly InputAction m_Player_Digit3;
+    private readonly InputAction m_Player_Digit4;
+    private readonly InputAction m_Player_Digit5;
+    private readonly InputAction m_Player_Digit6;
+    private readonly InputAction m_Player_Digit7;
+    private readonly InputAction m_Player_Digit8;
+    private readonly InputAction m_Player_Digit9;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -1448,6 +1756,62 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// </summary>
         public InputAction @ScrollWheel => m_Wrapper.m_Player_ScrollWheel;
         /// <summary>
+        /// Provides access to the underlying input action "Player/ToggleWatch".
+        /// </summary>
+        public InputAction @ToggleWatch => m_Wrapper.m_Player_ToggleWatch;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/WatchLeftClick".
+        /// </summary>
+        public InputAction @WatchLeftClick => m_Wrapper.m_Player_WatchLeftClick;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/WatchRightClick".
+        /// </summary>
+        public InputAction @WatchRightClick => m_Wrapper.m_Player_WatchRightClick;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/WatchBackspace".
+        /// </summary>
+        public InputAction @WatchBackspace => m_Wrapper.m_Player_WatchBackspace;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/Digit0".
+        /// </summary>
+        public InputAction @Digit0 => m_Wrapper.m_Player_Digit0;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/Digit1".
+        /// </summary>
+        public InputAction @Digit1 => m_Wrapper.m_Player_Digit1;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/Digit2".
+        /// </summary>
+        public InputAction @Digit2 => m_Wrapper.m_Player_Digit2;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/Digit3".
+        /// </summary>
+        public InputAction @Digit3 => m_Wrapper.m_Player_Digit3;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/Digit4".
+        /// </summary>
+        public InputAction @Digit4 => m_Wrapper.m_Player_Digit4;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/Digit5".
+        /// </summary>
+        public InputAction @Digit5 => m_Wrapper.m_Player_Digit5;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/Digit6".
+        /// </summary>
+        public InputAction @Digit6 => m_Wrapper.m_Player_Digit6;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/Digit7".
+        /// </summary>
+        public InputAction @Digit7 => m_Wrapper.m_Player_Digit7;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/Digit8".
+        /// </summary>
+        public InputAction @Digit8 => m_Wrapper.m_Player_Digit8;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/Digit9".
+        /// </summary>
+        public InputAction @Digit9 => m_Wrapper.m_Player_Digit9;
+        /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
         public InputActionMap Get() { return m_Wrapper.m_Player; }
@@ -1518,6 +1882,48 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @ScrollWheel.started += instance.OnScrollWheel;
             @ScrollWheel.performed += instance.OnScrollWheel;
             @ScrollWheel.canceled += instance.OnScrollWheel;
+            @ToggleWatch.started += instance.OnToggleWatch;
+            @ToggleWatch.performed += instance.OnToggleWatch;
+            @ToggleWatch.canceled += instance.OnToggleWatch;
+            @WatchLeftClick.started += instance.OnWatchLeftClick;
+            @WatchLeftClick.performed += instance.OnWatchLeftClick;
+            @WatchLeftClick.canceled += instance.OnWatchLeftClick;
+            @WatchRightClick.started += instance.OnWatchRightClick;
+            @WatchRightClick.performed += instance.OnWatchRightClick;
+            @WatchRightClick.canceled += instance.OnWatchRightClick;
+            @WatchBackspace.started += instance.OnWatchBackspace;
+            @WatchBackspace.performed += instance.OnWatchBackspace;
+            @WatchBackspace.canceled += instance.OnWatchBackspace;
+            @Digit0.started += instance.OnDigit0;
+            @Digit0.performed += instance.OnDigit0;
+            @Digit0.canceled += instance.OnDigit0;
+            @Digit1.started += instance.OnDigit1;
+            @Digit1.performed += instance.OnDigit1;
+            @Digit1.canceled += instance.OnDigit1;
+            @Digit2.started += instance.OnDigit2;
+            @Digit2.performed += instance.OnDigit2;
+            @Digit2.canceled += instance.OnDigit2;
+            @Digit3.started += instance.OnDigit3;
+            @Digit3.performed += instance.OnDigit3;
+            @Digit3.canceled += instance.OnDigit3;
+            @Digit4.started += instance.OnDigit4;
+            @Digit4.performed += instance.OnDigit4;
+            @Digit4.canceled += instance.OnDigit4;
+            @Digit5.started += instance.OnDigit5;
+            @Digit5.performed += instance.OnDigit5;
+            @Digit5.canceled += instance.OnDigit5;
+            @Digit6.started += instance.OnDigit6;
+            @Digit6.performed += instance.OnDigit6;
+            @Digit6.canceled += instance.OnDigit6;
+            @Digit7.started += instance.OnDigit7;
+            @Digit7.performed += instance.OnDigit7;
+            @Digit7.canceled += instance.OnDigit7;
+            @Digit8.started += instance.OnDigit8;
+            @Digit8.performed += instance.OnDigit8;
+            @Digit8.canceled += instance.OnDigit8;
+            @Digit9.started += instance.OnDigit9;
+            @Digit9.performed += instance.OnDigit9;
+            @Digit9.canceled += instance.OnDigit9;
         }
 
         /// <summary>
@@ -1574,6 +1980,48 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @ScrollWheel.started -= instance.OnScrollWheel;
             @ScrollWheel.performed -= instance.OnScrollWheel;
             @ScrollWheel.canceled -= instance.OnScrollWheel;
+            @ToggleWatch.started -= instance.OnToggleWatch;
+            @ToggleWatch.performed -= instance.OnToggleWatch;
+            @ToggleWatch.canceled -= instance.OnToggleWatch;
+            @WatchLeftClick.started -= instance.OnWatchLeftClick;
+            @WatchLeftClick.performed -= instance.OnWatchLeftClick;
+            @WatchLeftClick.canceled -= instance.OnWatchLeftClick;
+            @WatchRightClick.started -= instance.OnWatchRightClick;
+            @WatchRightClick.performed -= instance.OnWatchRightClick;
+            @WatchRightClick.canceled -= instance.OnWatchRightClick;
+            @WatchBackspace.started -= instance.OnWatchBackspace;
+            @WatchBackspace.performed -= instance.OnWatchBackspace;
+            @WatchBackspace.canceled -= instance.OnWatchBackspace;
+            @Digit0.started -= instance.OnDigit0;
+            @Digit0.performed -= instance.OnDigit0;
+            @Digit0.canceled -= instance.OnDigit0;
+            @Digit1.started -= instance.OnDigit1;
+            @Digit1.performed -= instance.OnDigit1;
+            @Digit1.canceled -= instance.OnDigit1;
+            @Digit2.started -= instance.OnDigit2;
+            @Digit2.performed -= instance.OnDigit2;
+            @Digit2.canceled -= instance.OnDigit2;
+            @Digit3.started -= instance.OnDigit3;
+            @Digit3.performed -= instance.OnDigit3;
+            @Digit3.canceled -= instance.OnDigit3;
+            @Digit4.started -= instance.OnDigit4;
+            @Digit4.performed -= instance.OnDigit4;
+            @Digit4.canceled -= instance.OnDigit4;
+            @Digit5.started -= instance.OnDigit5;
+            @Digit5.performed -= instance.OnDigit5;
+            @Digit5.canceled -= instance.OnDigit5;
+            @Digit6.started -= instance.OnDigit6;
+            @Digit6.performed -= instance.OnDigit6;
+            @Digit6.canceled -= instance.OnDigit6;
+            @Digit7.started -= instance.OnDigit7;
+            @Digit7.performed -= instance.OnDigit7;
+            @Digit7.canceled -= instance.OnDigit7;
+            @Digit8.started -= instance.OnDigit8;
+            @Digit8.performed -= instance.OnDigit8;
+            @Digit8.canceled -= instance.OnDigit8;
+            @Digit9.started -= instance.OnDigit9;
+            @Digit9.performed -= instance.OnDigit9;
+            @Digit9.canceled -= instance.OnDigit9;
         }
 
         /// <summary>
@@ -1979,6 +2427,104 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnScrollWheel(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "ToggleWatch" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnToggleWatch(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "WatchLeftClick" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnWatchLeftClick(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "WatchRightClick" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnWatchRightClick(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "WatchBackspace" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnWatchBackspace(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Digit0" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnDigit0(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Digit1" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnDigit1(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Digit2" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnDigit2(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Digit3" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnDigit3(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Digit4" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnDigit4(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Digit5" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnDigit5(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Digit6" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnDigit6(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Digit7" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnDigit7(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Digit8" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnDigit8(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Digit9" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnDigit9(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "UI" which allows adding and removing callbacks.

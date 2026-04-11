@@ -44,7 +44,7 @@ public class InventoryTester : MonoBehaviour
                 inventory?.UseActiveItem();
             }
 
-            if (Keyboard.current != null && Keyboard.current.tabKey.wasPressedThisFrame)
+            if (Keyboard.current != null && Keyboard.current.iKey.wasPressedThisFrame)
             {
                 inventory?.PrintInventory();
             }
