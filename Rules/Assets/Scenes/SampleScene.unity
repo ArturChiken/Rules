@@ -1162,11 +1162,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 915032228}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2beb42316411ff45b1686c43493b141, type: 3}
+  m_Script: {fileID: 11500000, guid: 9da6e2c773c5fdb47a9d3601e81fc776, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TriggerRule
+  m_EditorClassIdentifier: Assembly-CSharp::sedfsdf
   rulesManager: {fileID: 1290651472}
-  ruleType: 0
   isActive: 1
   isDone: 0
 --- !u!1 &927497918
