@@ -30,9 +30,26 @@ public class GameDateTime : MonoBehaviour
     [Header("=== ДЛИТЕЛЬНОСТЬ СУТОК ===")]
     [SerializeField] private float dayLengthHours = 24f;      // Можно менять во время игры
 
+    [Header("=== ФОРМАТ ОТОБРАЖЕНИЯ ===")]
+    [SerializeField] private bool use24HourFormat = true;  // true = 24h, false = 12h (AM/PM)
+
     [Header("=== НАСТРОЙКИ МЕСЯЦЕВ ===")]
     [SerializeField] private int daysInMonth = 30;             // По умолчанию 30 дней в месяце
     [SerializeField] private bool useRealMonths = false;       // Использовать реальные месяцы (28-31 день)
+
+    [Header("=== СЕКУНДОМЕР ===")]
+    private float stopwatchTime = 0f;
+    private bool stopwatchRunning = false;
+
+    [Header("=== ТАЙМЕР ===")]
+    private float timerTargetTime = 0f;
+    private float timerCurrentTime = 0f;
+    private bool timerRunning = false;
+
+    // События для секундомера и таймера
+    public System.Action<float> OnStopwatchUpdate;
+    public System.Action<float> OnTimerUpdate;
+    public System.Action OnTimerComplete;
 
     [Header("=== ОТЛАДКА ===")]
     [SerializeField] private bool logTimeChanges = false;
@@ -65,6 +82,7 @@ public class GameDateTime : MonoBehaviour
     public int Second => currentSecond;
     public float DayLengthHours => dayLengthHours;
     public float TimeScale => timeScale;
+    public bool Use24HourFormat => use24HourFormat;
 
     // Нормализованное время дня (0-1)
     public float NormalizedTimeOfDay => currentTimeInSeconds / (dayLengthHours * 3600f);
@@ -190,7 +208,27 @@ public class GameDateTime : MonoBehaviour
             if (oldYear != currentYear && enableYear)
                 OnYearChanged?.Invoke();
         }
+        // Обновление секундомера
+        if (stopwatchRunning)
+        {
+            stopwatchTime += Time.unscaledDeltaTime;
+            if (stopwatchTime >= 3600f)
+                stopwatchTime = 3600f;
+            OnStopwatchUpdate?.Invoke(stopwatchTime);
+        }
 
+        // Обновление таймера
+        if (timerRunning)
+        {
+            timerCurrentTime -= Time.unscaledDeltaTime;
+            if (timerCurrentTime <= 0f)
+            {
+                timerCurrentTime = 0f;
+                timerRunning = false;
+                OnTimerComplete?.Invoke();
+            }
+            OnTimerUpdate?.Invoke(timerCurrentTime);
+        }
         OnDateTimeChanged?.Invoke();
     }
 
@@ -284,6 +322,15 @@ public class GameDateTime : MonoBehaviour
         if (logDateChanges)
             Debug.Log($"Дата установлена: {GetDateString()}");
     }
+    
+    /// <summary>
+    /// Переключение формата времени
+    /// </summary>
+    public void ToggleTimeFormat()
+    {
+        use24HourFormat = !use24HourFormat;
+        OnDateTimeChanged?.Invoke();
+    }
 
     /// <summary>
     /// Добавить время
@@ -350,6 +397,17 @@ public class GameDateTime : MonoBehaviour
     }
 
     /// <summary>
+    /// Получить день недели
+    /// </summary>
+    public string GetDayOfWeek()
+    {
+        // Используем встроенный DateTime для расчета
+        System.DateTime date = new System.DateTime(currentYear, currentMonth, currentDay);
+        string[] dayNames = { "ВС", "ПН", "ВТ", "СР", "ЧТ", "ПТ", "СБ" };
+        return dayNames[(int)date.DayOfWeek];
+    }
+
+    /// <summary>
     /// Получить строку времени (HH:MM:SS)
     /// </summary>
     public string GetTimeString()
@@ -362,6 +420,20 @@ public class GameDateTime : MonoBehaviour
         if (enableSecond) time += $":{currentSecond:00}";
 
         return time;
+    }
+
+    /// <summary>
+    /// Получить форматированное время с AM/PM
+    /// </summary>
+    public string GetFormattedTime()
+    {
+        if (use24HourFormat)
+            return GetTimeString();
+
+        int hour12 = currentHour % 12;
+        if (hour12 == 0) hour12 = 12;
+        string ampm = currentHour >= 12 ? "PM" : "AM";
+        return $"{hour12:00}:{currentMinute:00}:{currentSecond:00} {ampm}";
     }
 
     /// <summary>
@@ -393,6 +465,14 @@ public class GameDateTime : MonoBehaviour
     }
 
     /// <summary>
+    /// Получить дату в формате MM-DD
+    /// </summary>
+    public string GetShortDate()
+    {
+        return $"{currentMonth:00}-{currentDay:00}";
+    }
+
+    /// <summary>
     /// Для отладки - показать текущее состояние
     /// </summary>
     public void PrintCurrentDateTime()
@@ -403,4 +483,38 @@ public class GameDateTime : MonoBehaviour
         Debug.Log($"Скорость времени: {timeScale}x");
         Debug.Log($"Длина дня: {dayLengthHours} часов");
     }
+    #region Stopwatch
+    public void StopwatchStart() => stopwatchRunning = true;
+    public void StopwatchStop() => stopwatchRunning = false;
+    public void StopwatchReset()
+    {
+        stopwatchTime = 0f;
+        OnStopwatchUpdate?.Invoke(stopwatchTime);
+    }
+    public float GetStopwatchTime() => stopwatchTime;
+    public bool IsStopwatchRunning() => stopwatchRunning;
+    #endregion
+
+    #region Timer
+    public void TimerStart(float seconds)
+    {
+        timerTargetTime = seconds;
+        timerCurrentTime = seconds;
+        timerRunning = true;
+        OnTimerUpdate?.Invoke(timerCurrentTime);
+    }
+
+    public void TimerStop() => timerRunning = false;
+
+    public void TimerReset()
+    {
+        timerRunning = false;
+        timerTargetTime = 0f;
+        timerCurrentTime = 0f;
+        OnTimerUpdate?.Invoke(timerCurrentTime);
+    }
+
+    public float GetTimerCurrentTime() => timerCurrentTime;
+    public bool IsTimerRunning() => timerRunning;
+    #endregion
 }
