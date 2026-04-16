@@ -1,17 +1,21 @@
 using UnityEngine;
 
-public class TriggerRule :  RulesTypes
+public class TriggerRule : RulesTypes
 {
+    protected virtual void Start()
+    {
+        NewRule(gameObject);
+    }
 
-    public void OnTriggerEnter(Collider other)
+    protected virtual void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
             Debug.Log("Игрок вошел в триггер!");
             isDone = true;
 
-            rulesManager.RuleData(isActive, isDone, gameObject);
-            rulesManager.RuleUpdate(isActive, isDone, gameObject);
+            RulesManager.Instance.RuleInfo(gameObject);
+            RulesManager.Instance.RuleUpdate(gameObject, isActive, isDone);
         }
     }
 }
