@@ -260,6 +260,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8043594087823710939}
+  - component: {fileID: 6560049578218694148}
   m_Layer: 0
   m_Name: CameraHolder
   m_TagString: Untagged
@@ -283,6 +284,26 @@ Transform:
   - {fileID: 3441491614532147586}
   m_Father: {fileID: 8944453586990192034}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6560049578218694148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7772914449098950823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 744bfab17b68a034d97bfd3d13e8bf6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DreamMovement.AimMove
+  bodyTransform: {fileID: 8944453586990192034}
+  sensitivityMultiplier: 0.2
+  horizontalSensitivity: 1
+  verticalSensitivity: 1
+  minYRotation: -90
+  maxYRotation: 90
+  punchAngle: {x: 0, y: 0}
+  punchAngleVel: {x: 0, y: 0}
 --- !u!1 &8797712669436465122
 GameObject:
   m_ObjectHideFlags: 0
@@ -295,7 +316,6 @@ GameObject:
   - component: {fileID: 1071692079733763490}
   - component: {fileID: 4458768266751634034}
   - component: {fileID: 5574840193977428562}
-  - component: {fileID: 6080133753808540220}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -384,23 +404,3 @@ MonoBehaviour:
     autoJump: 0
     noclipDisableCollisions: 1
     noclipSpeed: 15
---- !u!114 &6080133753808540220
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8797712669436465122}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 744bfab17b68a034d97bfd3d13e8bf6d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DreamMovement.AimMove
-  bodyTransform: {fileID: 8560945271718126986}
-  sensitivityMultiplier: 0.2
-  horizontalSensitivity: 1
-  verticalSensitivity: 1
-  minYRotation: -90
-  maxYRotation: 90
-  punchAngle: {x: 0, y: 0}
-  punchAngleVel: {x: 0, y: 0}

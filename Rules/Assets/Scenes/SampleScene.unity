@@ -1779,6 +1779,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32cca8b24b29d2545b6a60108f17e4a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RulesManager
+--- !u!1 &1326890715 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7772914449098950823, guid: 10c3051c839d97e4cacbb2ac076affb1, type: 3}
+  m_PrefabInstance: {fileID: 1777981571713807439}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1326890717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1326890715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 744bfab17b68a034d97bfd3d13e8bf6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DreamMovement.AimMove
+  bodyTransform: {fileID: 1897476960}
+  sensitivityMultiplier: 0.35
+  horizontalSensitivity: 1
+  verticalSensitivity: 1
+  minYRotation: -90
+  maxYRotation: 90
+  punchAngle: {x: 0, y: 0}
+  punchAngleVel: {x: 0, y: 0}
 --- !u!1 &1331219789
 GameObject:
   m_ObjectHideFlags: 0
@@ -2559,6 +2584,11 @@ MonoBehaviour:
   showWatchTrigger: ShowWatch
   hideWatchTrigger: HideWatch
   pauseGameWhenOpen: 0
+--- !u!4 &1897476960 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8944453586990192034, guid: 10c3051c839d97e4cacbb2ac076affb1, type: 3}
+  m_PrefabInstance: {fileID: 1777981571713807439}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2019232956
 GameObject:
   m_ObjectHideFlags: 0
@@ -2897,13 +2927,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6080133753808540220, guid: 10c3051c839d97e4cacbb2ac076affb1, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8797712669436465122, guid: 10c3051c839d97e4cacbb2ac076affb1, type: 3}
       insertIndex: 3
       addedObject: {fileID: 1897476956}
+    - targetCorrespondingSourceObject: {fileID: 7772914449098950823, guid: 10c3051c839d97e4cacbb2ac076affb1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1326890717}
     - targetCorrespondingSourceObject: {fileID: 6804016532813290982, guid: 10c3051c839d97e4cacbb2ac076affb1, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1777981571713807441}
