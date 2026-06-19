@@ -4,7 +4,7 @@ public class SeeRule : RulesTypes
 {
     [Header("Настройки луча")]
     [SerializeField] protected LayerMask layerMask;
-    [SerializeField] protected bool showDebugRay = true;
+    [SerializeField] protected bool showDebugRay = false;
 
     [Header("Насртойка правила")]
     [SerializeField] protected float lookDuration = 1f;
