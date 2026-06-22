@@ -1757,6 +1757,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32cca8b24b29d2545b6a60108f17e4a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RulesManager
+  maxRulesBudget: 1000
+  rulesBudget: 1000
 --- !u!1 &1331219789
 GameObject:
   m_ObjectHideFlags: 0
@@ -2790,9 +2792,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83c250582c0a49441b11e3c945c4dd09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SeeRule
+  ruleCost: 0
   isActive: 1
   isDone: 0
-  ruleID: 0
   layerMask:
     serializedVersion: 2
     m_Bits: 128
