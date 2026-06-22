@@ -13,9 +13,10 @@ public class SeeRule : RulesTypes
 
     protected Camera playerCamera;
 
-    protected virtual void Start()
+    private void Start()
     {
-        NewRule(gameObject);
+        FindRulesManager();
+        GetRulesManager().RegisterNewRule(ruleCost, isActive, isDone);
 
         FindPlayerCamera();
     }
@@ -80,7 +81,7 @@ public class SeeRule : RulesTypes
             Debug.Log("The rule is done");
             isDone = true;
 
-            RulesManager.Instance.RuleUpdate(gameObject, isActive, isDone, ruleID);
+            FinishRule();
         }
     }
 

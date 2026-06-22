@@ -2,15 +2,35 @@ using UnityEngine;
 
 public class RulesTypes : MonoBehaviour
 {
-    public bool isActive;
-    public bool isDone;
-    public int ruleID;
+    public int ruleCost;
 
-    public void NewRule(GameObject gameObject)
+    public bool isActive = false;
+    public bool isDone = false;
+
+    private RulesManager rulesManager;
+
+    private void Start()
     {
-        if (RulesManager.Instance != null)
+        rulesManager = GameObject.Find("Managers").GetComponent<RulesManager>();
+        rulesManager.RegisterNewRule(ruleCost, isActive, isDone);
+    }
+
+    public void FinishRule()
+    {
+        if (isDone)
         {
-            RulesManager.Instance.RuleRegistration(gameObject, isActive, isDone, ruleID);
+            Debug.Log($"The rule had: active is {isActive}, done is {isDone}");
+            rulesManager.EndRule(gameObject);
         }
+    }
+
+    public void FindRulesManager()
+    {
+        rulesManager = GameObject.Find("Managers").GetComponent<RulesManager>();
+    }
+
+    public RulesManager GetRulesManager()
+    {
+        return rulesManager;
     }
 }

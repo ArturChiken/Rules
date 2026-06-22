@@ -3,82 +3,46 @@ using UnityEngine;
 
 public class RulesManager : MonoBehaviour
 {
-    private static RulesManager instance;
-    public static RulesManager Instance => instance;
+    [SerializeField]
+    private int maxRulesBudget;
+    private int minRulesBudget = 0;
+    public int rulesBudget;
 
-    private Dictionary<GameObject, RuleData> activeRules = new Dictionary<GameObject, RuleData>();
-
-    private int currentRuleID = 0;
-
-    private void Awake()
+    public void RegisterNewRule(int ruleCost, bool isActive, bool isDone)
     {
-        if (instance == null)
+        if (rulesBudget -  ruleCost >= minRulesBudget)
         {
-            instance = this;
+            rulesBudget -= ruleCost;
+            Debug.Log("New rule has registered");
+            Debug.Log($"It costs {ruleCost}");
+            Debug.Log($"We have {rulesBudget} budget left");
         }
         else
         {
-            Destroy(gameObject);
+            Debug.Log("New rule can't be registered");
+            Debug.Log("Lack of budget");
+            Debug.Log($"Our budget is {rulesBudget}, the rule cost is {ruleCost}");
         }
     }
 
-    public void RuleRegistration(GameObject gameObject, bool isActive, bool isDone, int ruleID)
+    public void EndRule(GameObject gameObject)
     {
-        if (ruleID == 0)
+        //RulesTypes rule = gameObject.GetComponent<RulesTypes>();
+        int ruleCost = gameObject.GetComponent<RulesTypes>().ruleCost;
+
+        if (rulesBudget + ruleCost <= maxRulesBudget)
         {
-            ruleID = currentRuleID++;
+            rulesBudget += ruleCost;
+            Debug.Log("Case 1");
         }
-
-        if (!activeRules.ContainsKey(gameObject))
+        else if (rulesBudget + ruleCost > maxRulesBudget)
         {
-            activeRules.Add(gameObject, new RuleData
-            {
-                gameObject = gameObject,
-                isActive = isActive,
-                isDone = isDone,
-                ruleID = ruleID
-
-            });
-            Debug.Log($"Правило {ruleID} зарегистрировано для {gameObject.name}");
+            rulesBudget = maxRulesBudget;
+            Debug.Log("Case 2");
         }
-    }
 
-    public void RuleInfo(GameObject gameObject)
-    {
-        var rule = activeRules[gameObject];
-        Debug.Log($"Правило {rule.ruleID}, {rule.isActive}, {rule.isDone}, {gameObject.name}");
-    }
-
-    public void RuleUpdate(GameObject gameObject, bool isActive, bool isDone,  int ruleID = 0)
-    {
-        if (activeRules.ContainsKey(gameObject))
-        {
-            if (isActive && isDone)
-            {
-                activeRules[gameObject].isDone = isDone;
-                activeRules[gameObject].isActive = isActive;
-                RuleDestroy(gameObject);
-            }
-        }
-    }
-
-    private void RuleDestroy(GameObject gameObject)
-    {
-        var rule = activeRules[gameObject];
-        if (rule.isActive && rule.isDone)
-        {
-            Debug.Log($"Rule {rule.ruleID} has been deleted!");
-
-            Destroy(gameObject);
-            activeRules.Remove(gameObject);
-        }
-    }
-
-    private class RuleData
-    {
-        public GameObject gameObject;
-        public bool isActive;
-        public bool isDone;
-        public int ruleID;
+        Debug.Log("Rule has been deleted");
+        Debug.Log($"Our budget is {rulesBudget} now, the rule gave us {ruleCost}");
+        Destroy(gameObject);
     }
 }
