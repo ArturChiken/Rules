@@ -126,6 +126,8 @@ GameObject:
   - component: {fileID: 485400930270512911}
   - component: {fileID: 4359603306360308352}
   - component: {fileID: 39454125217351472}
+  - component: {fileID: 4148881777586878116}
+  - component: {fileID: 31335470559233447}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -251,6 +253,49 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
+--- !u!114 &4148881777586878116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6804016532813290982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 744bfab17b68a034d97bfd3d13e8bf6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DreamMovement.AimMove
+  bodyTransform: {fileID: 8560945271718126986}
+  sensitivityMultiplier: 1
+  horizontalSensitivity: 1
+  verticalSensitivity: 1
+  minYRotation: -90
+  maxYRotation: 90
+  punchAngle: {x: 0, y: 0}
+  punchAngleVel: {x: 0, y: 0}
+--- !u!114 &31335470559233447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6804016532813290982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 368eb5c49bebb844a84a5e615fea74a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerAim
+  maxAimDistance: 100
+  aimLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  aimImage: {fileID: 0}
+  defaultAimSprite: {fileID: 0}
+  interactableAimSprite: {fileID: 0}
+  interactionPromptText: {fileID: 0}
+  defaultColor: {r: 1, g: 1, b: 1, a: 1}
+  interactableColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  blockedColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &7772914449098950823
 GameObject:
   m_ObjectHideFlags: 0
@@ -295,7 +340,6 @@ GameObject:
   - component: {fileID: 1071692079733763490}
   - component: {fileID: 4458768266751634034}
   - component: {fileID: 5574840193977428562}
-  - component: {fileID: 6080133753808540220}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -384,23 +428,3 @@ MonoBehaviour:
     autoJump: 0
     noclipDisableCollisions: 1
     noclipSpeed: 15
---- !u!114 &6080133753808540220
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8797712669436465122}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 744bfab17b68a034d97bfd3d13e8bf6d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DreamMovement.AimMove
-  bodyTransform: {fileID: 8560945271718126986}
-  sensitivityMultiplier: 0.2
-  horizontalSensitivity: 1
-  verticalSensitivity: 1
-  minYRotation: -90
-  maxYRotation: 90
-  punchAngle: {x: 0, y: 0}
-  punchAngleVel: {x: 0, y: 0}
