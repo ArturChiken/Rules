@@ -16,7 +16,7 @@ public class SeeRule : RulesTypes
     private void Start()
     {
         FindRulesManager();
-        GetRulesManager().RegisterNewRule(ruleCost, isActive, isDone);
+        GetRulesManager().RegisterNewRule(ruleCost);
 
         FindPlayerCamera();
     }

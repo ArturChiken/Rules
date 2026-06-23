@@ -12,7 +12,7 @@ public class RulesTypes : MonoBehaviour
     private void Start()
     {
         rulesManager = GameObject.Find("Managers").GetComponent<RulesManager>();
-        rulesManager.RegisterNewRule(ruleCost, isActive, isDone);
+        rulesManager.RegisterNewRule(ruleCost);
     }
 
     public void FinishRule()
@@ -20,7 +20,7 @@ public class RulesTypes : MonoBehaviour
         if (isDone)
         {
             Debug.Log($"The rule had: active is {isActive}, done is {isDone}");
-            rulesManager.EndRule(gameObject);
+            rulesManager.SuccessRule(gameObject);
         }
     }
 
